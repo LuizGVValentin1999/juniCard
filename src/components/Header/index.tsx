@@ -13,17 +13,17 @@ export default class Header extends Component {
           <Menu.Item name="Login" href="/" active={activeItem === "Login"} />
           <Menu.Item
             name="Saldo"
-            href="/Saldo"
+            href="/saldo"
             active={activeItem === "Saldo"}
           />
           <Menu.Item
             name="Lista de compra"
-            href="/Lista"
+            href="/lista"
             active={activeItem === "Lista"}
           />
           <Menu.Item
             name="Comprar item"
-            href="/Compra"
+            href="/compra"
             active={activeItem === "Comprar"}
           />
         </Menu>

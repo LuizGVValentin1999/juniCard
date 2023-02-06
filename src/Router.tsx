@@ -11,6 +11,7 @@ export function Router() {
     <Routes>
       <Route>
         <Route path="/" element={<Saldo />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/saldo" element={<Saldo />} />
         <Route path="/compra" element={<Compra />} />
         <Route path="/lista" element={<Lista />} />
