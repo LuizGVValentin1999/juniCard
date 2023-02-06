@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { useHtml5QrCodeScanner } from 'react-html5-qrcode-reader';
 
 export function QrCode() {
+
+  const html5QrCodeScannerFile = process.env.PUBLIC_URL + '/html5-qrcode.min.js'; // <-- this file is in /public.
  
   const { Html5QrcodeScanner } = useHtml5QrCodeScanner(
-    process.env.PUBLIC_URL + '/html5-qrcode.min.js'
+    html5QrCodeScannerFile
   );
   useEffect(() => {
     if (Html5QrcodeScanner) {
