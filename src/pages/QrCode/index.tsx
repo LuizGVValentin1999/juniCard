@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useHtml5QrCodeScanner } from 'react-html5-qrcode-reader';
 
 export function QrCode() {
+ 
   const { Html5QrcodeScanner } = useHtml5QrCodeScanner(
-    'url to the .min.js (see examples).'
+    process.env.PUBLIC_URL + '/html5-qrcode.min.js'
   );
   useEffect(() => {
     if (Html5QrcodeScanner) {
