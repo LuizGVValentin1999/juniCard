@@ -1,29 +1,21 @@
 import { useEffect } from 'react';
-import { useHtml5QrCodeScanner } from 'react-html5-qrcode-reader';
+import React from "react";
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export function QrCode() {
+  const [data, setData] = React.useState("Not Found");
 
-  const html5QrCodeScannerFile =  '../../../html5-qrcode.min.js'; // <-- this file is in /public.
- 
-  const { Html5QrcodeScanner } = useHtml5QrCodeScanner(
-    html5QrCodeScannerFile
-  );
-  useEffect(() => {
-    if (Html5QrcodeScanner) {
-      // Creates anew instance of `HtmlQrcodeScanner` and renders the block.
-      let html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader",
-        { fps: 10, qrbox: {width: 250, height: 250} },
-        /* verbose= */ false);
-      html5QrcodeScanner.render(
-        (data: any) => console.log('success ->', data), 
-        (err: any) => console.log('err ->', err)
-      );
-    }
-  }, [Html5QrcodeScanner]);
   return (
     <>
-       <div id='reader'></div>
+       <BarcodeScannerComponent
+        width={500}
+        height={500}
+        onUpdate={(err, result) => {
+          if (result) setData(result.text);
+          else setData("Not Found");
+        }}
+      />
+      <p>{data}</p>
     </>
   );
 }
