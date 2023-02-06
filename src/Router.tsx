@@ -10,7 +10,7 @@ export function Router() {
   return (
     <Routes>
       <Route>
-        <Route path="/" element={<QrCode />} />
+        <Route path="/" element={<Saldo />} />
         <Route path="/saldo" element={<Saldo />} />
         <Route path="/compra" element={<Compra />} />
         <Route path="/lista" element={<Lista />} />
