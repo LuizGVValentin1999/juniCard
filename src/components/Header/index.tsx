@@ -10,7 +10,6 @@ export default class Header extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Menu.Item name="Login" href="/" active={activeItem === "Login"} />
           <Menu.Item
             name="Saldo"
             href="/saldo"

@@ -11,6 +11,7 @@ import {
 
 export function Login() {
   return (
+    <div className='center'>
     <Grid className="loginBox" textAlign="center" verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header color="red" textAlign="center">
@@ -39,5 +40,6 @@ export function Login() {
         </Form>
       </Grid.Column>
     </Grid>
+    </div>
   );
 }
