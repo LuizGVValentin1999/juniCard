@@ -4,7 +4,7 @@ import { Login } from "./pages/Login";
 import { Saldo } from "./pages/Saldo";
 import { Compra } from "./pages/Compra";
 import { Lista } from "./pages/Lista";
-import { QrCode } from "./pages/QrCode";
+import { QrCode } from "./pages/LeitorQrCode";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 
 export function Router() {
