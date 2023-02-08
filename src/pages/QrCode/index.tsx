@@ -7,12 +7,10 @@ export function QrCode() {
 
   return (
     <>
-       <BarcodeScannerComponent
-        width={500}
-        height={500}
-        onUpdate={(err, result) => {
-         
-        }}
+      <BarcodeScannerComponent
+      width={500}
+      height={500}
+      onUpdate={(err, result) => { }}
       />
       <p>{data}</p>
     </>
