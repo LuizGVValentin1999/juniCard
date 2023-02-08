@@ -28,6 +28,17 @@ export default class Header extends Component<HeaderProps> {
             href="/qrcode"
             active={activeItem === "/qrcode"}
           />
+          <Menu.Item
+            name="Meu QrCode"
+            href="/meuqrcode"
+            active={activeItem === "/meuqrcode"}
+          />
+          <Menu.Menu position='right'>
+            <Menu.Item
+              name='Sair'
+              active={activeItem === 'Sair'}
+            />
+          </Menu.Menu>
         </Menu>
       </div>
     );
