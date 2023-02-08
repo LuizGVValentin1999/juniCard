@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 
-export default class Header extends Component {
-  state = { activeItem: "Login" };
+interface HeaderProps {
+  name: string;
+}
+export default class Header extends Component<HeaderProps> {
+  state = { activeItem: this.props.name };
 
   render() {
     const { activeItem } = this.state;
@@ -13,17 +16,17 @@ export default class Header extends Component {
           <Menu.Item
             name="Saldo"
             href="/saldo"
-            active={activeItem === "Saldo"}
+            active={activeItem === "/saldo"}
           />
           <Menu.Item
             name="Lista de compra"
             href="/lista"
-            active={activeItem === "Lista"}
+            active={activeItem === "/lista"}
           />
           <Menu.Item
             name="Comprar item"
-            href="/compra"
-            active={activeItem === "Comprar"}
+            href="/qrcode"
+            active={activeItem === "/qrcode"}
           />
         </Menu>
       </div>

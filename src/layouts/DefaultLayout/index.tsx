@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 export function DefaultLayout() {
   return (
     <div>
-        <Header />
+        <Header name={window.location.pathname} />
         <div className='center'>
             <Outlet />
         </div>
