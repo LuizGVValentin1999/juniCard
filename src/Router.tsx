@@ -5,6 +5,7 @@ import { Saldo } from "./pages/Saldo";
 import { Compra } from "./pages/Compra";
 import { Lista } from "./pages/Lista";
 import { QrCode } from "./pages/LeitorQrCode";
+import { MeuQrcode } from "./pages/MeuQrcode";
 import { DefaultLayout } from "./layouts/DefaultLayout";
 
 export function Router() {
@@ -17,6 +18,7 @@ export function Router() {
         <Route path="/compra" element={<Compra />} />
         <Route path="/lista" element={<Lista />} />
         <Route path="/qrcode" element={<QrCode />} />
+        <Route path="/meuqrcode" element={<MeuQrcode />} />
       </Route>
     </Routes>
   );
