@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import {
   Button,
   Form,
@@ -8,8 +8,40 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
+import { api } from "../../api/axios";
+import { useCookies } from "react-cookie";
 
 export function Login() {
+
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  const [cookies, setCookie] = useCookies();
+  
+  async function login(event: FormEvent) {
+    event.preventDefault();
+  
+    if(!usuario || !password) {
+      return;
+    }
+    
+    try{
+      let response = await api.post('login', {
+        Usuario: usuario,
+        Senha: password
+      });
+      if(response.data.token){
+        setCookie('tokenJunicard', response.data.token);
+      }
+    
+      setUsuario('');
+      setPassword('');
+    }
+    catch (error:any) {
+      alert(error.response.data.msg);
+    }
+   
+  }
+
   return (
     <div className='center'>
     <Grid className="loginBox" textAlign="center" verticalAlign="middle">
@@ -17,13 +49,15 @@ export function Login() {
         <Header color="red" textAlign="center">
           <h1>Bem vindo a Juni Card</h1>
         </Header>
-        <Form size="large">
+        <Form  onSubmit={login}  size="large">
           <Segment stacked>
             <Form.Input
               fluid
               icon="user"
               iconPosition="left"
               placeholder="Nome de usuario"
+              value={usuario}
+              onChange={event => setUsuario(event.target.value)}
             />
             <Form.Input
               fluid
@@ -31,6 +65,8 @@ export function Login() {
               iconPosition="left"
               placeholder="Senha passada pela professora"
               type="password"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
             />
 
             <Button color="red" fluid size="large">
