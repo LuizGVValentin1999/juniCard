@@ -10,12 +10,12 @@ export function Trasferir() {
       <BarcodeScannerComponent
       width={500}
       height={500}
-      onUpdate={(err, result) => { 
+      onUpdate={(err, result:any) => { 
         if (result) setData(result.text);
         else setData("Not Found");
       }}
       />
       <p>{data}</p>
     </>
-  );
+  ); 
 }
