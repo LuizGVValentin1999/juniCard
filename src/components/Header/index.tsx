@@ -33,6 +33,11 @@ export default class Header extends Component<HeaderProps> {
             href="/meuqrcode"
             active={activeItem === "/meuqrcode"}
           />
+          <Menu.Item
+            name="Trasferir"
+            href="/trasferir"
+            active={activeItem === "/trasferir"}
+          />
           <Menu.Menu position='right'>
             <Menu.Item
               name='Sair'
