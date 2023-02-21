@@ -20,6 +20,7 @@ export function Login() {
   async function login() {
   
     if(!usuario || !password) {
+      alert("campos de login são obrigatorios");
       return;
     }
     
