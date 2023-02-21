@@ -34,8 +34,8 @@ function exampleReducer(state: any, action: { type: any; size?: any; }) {
 async function trasferir() {
   try{
     let response = await api.post('trasferir',{
-      Valor: valor,
-      id_junior: infoAluno?.ID
+      Valor: 10,
+      id_junior: 4
     },{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
     if(response.data.status === '1'){
       alert(response.data.msg);
