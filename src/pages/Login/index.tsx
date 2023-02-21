@@ -17,8 +17,7 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [cookies, setCookie] = useCookies();
   
-  async function login(event: FormEvent) {
-    event.preventDefault();
+  async function login() {
   
     if(!usuario || !password) {
       return;
@@ -50,11 +49,12 @@ export function Login() {
         <Header color="red" textAlign="center">
           <h1>Bem vindo a Juniedas</h1>
         </Header>
-        <Form  onSubmit={login}  size="large">
+        <Form  size="large">
           <Segment stacked>
             <Form.Input
               fluid
               icon="user"
+              name="user"
               iconPosition="left"
               placeholder="Nome de usuario"
               value={usuario}
@@ -66,11 +66,12 @@ export function Login() {
               iconPosition="left"
               placeholder="Senha passada pela professora"
               type="password"
+              name="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
             />
 
-            <Button color="red" fluid size="large">
+            <Button color="red" fluid size="large" onClick={login}>
               Entrar
             </Button>
           </Segment>
