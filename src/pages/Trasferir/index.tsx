@@ -80,7 +80,7 @@ async function trasferir() {
           type: 'close'
         })}
       >
-        <Modal.Header>Trasferir Juniedas para o Junior : LUIZ </Modal.Header>
+        <Modal.Header>Trasferir Juniedas para o Junior : { infoAluno?.USUARIO} </Modal.Header>
         <Modal.Content >
           <div className="centerComp">
           <p>Quantas Juniedas gostaria de trasferir ? </p>

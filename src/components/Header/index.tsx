@@ -18,16 +18,16 @@ export default class Header extends Component<HeaderProps> {
             href="/saldo"
             active={activeItem === "/saldo"}
           />
-          <Menu.Item
+          {/* <Menu.Item
             name="Lista de compra"
             href="/lista"
             active={activeItem === "/lista"}
-          />
-          <Menu.Item
+          /> */}
+          {/* <Menu.Item
             name="Comprar item"
             href="/qrcode"
             active={activeItem === "/qrcode"}
-          />
+          /> */}
           <Menu.Item
             name="Meu QrCode"
             href="/meuqrcode"
