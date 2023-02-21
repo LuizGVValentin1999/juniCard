@@ -55,7 +55,6 @@ export function Login() {
             <Form.Input
               fluid
               icon="user"
-              name="user"
               iconPosition="left"
               placeholder="Nome de usuario"
               value={usuario}
@@ -67,7 +66,6 @@ export function Login() {
               iconPosition="left"
               placeholder="Senha passada pela professora"
               type="password"
-              name="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
             />
