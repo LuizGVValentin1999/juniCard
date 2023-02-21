@@ -162,7 +162,7 @@ useEffect(() => {
   })
   const { open, size } = state
   return (
-    <div>
+    <div className="fullW">
       <Button onClick={() => {
          setIdProduto('');
          setCodigoProduto('');

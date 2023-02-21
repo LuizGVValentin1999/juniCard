@@ -37,7 +37,9 @@ body #root {
     align-items: center;
 }
 
-
+.fullW{
+  width: 90%
+}
 
 
 input{
