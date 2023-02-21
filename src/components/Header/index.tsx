@@ -34,7 +34,7 @@ export default class Header extends Component<HeaderProps> {
             href="/meuqrcode"
             active={activeItem === "/meuqrcode"}
           />
-          {adminUser === '1' && 
+          {adminUser && 
             <Menu.Item
             name="Trasferir"
             href="/trasferir"

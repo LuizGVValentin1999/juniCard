@@ -35,7 +35,9 @@ export function DefaultLayout() {
    
   return (
     <div>
+      { infoUser &&
         <Header admin={infoUser?.ADMIN} name={window.location.pathname} />
+      }
         <div className='center'>
             <Outlet />
         </div>
