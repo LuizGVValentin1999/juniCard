@@ -45,7 +45,7 @@ async function trasferir() {
     if(error.response.data.status === '0'){
       setCookie('tokenJunicard', false);
     }
-    alert(error.response.data.msg);
+    alert('ERRO');
   }
   
   dispatch({type: 'close'});
