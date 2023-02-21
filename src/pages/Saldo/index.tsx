@@ -24,7 +24,7 @@ export function Saldo() {
       }
     }
     catch (error:any) {
-      if(error.response.data.status === '0'){
+      if(error.response.data.status === '-1'){
         setCookie('tokenJunicard', '');
       }
       alert(error.response.data.msg);
@@ -33,8 +33,8 @@ export function Saldo() {
   return (
     <>
       <Statistic color="green">
-        <Statistic.Label>Seu Saldo no Juni Card é</Statistic.Label>
-        <Statistic.Value>J${saldo?formatNumber(saldo):'caregando...'}</Statistic.Value>
+        <Statistic.Label>Seu Saldo no Juniedas é</Statistic.Label>
+        <Statistic.Value>J$ {saldo?formatNumber(saldo):'caregando...'}</Statistic.Value>
       </Statistic>
     </>
   );

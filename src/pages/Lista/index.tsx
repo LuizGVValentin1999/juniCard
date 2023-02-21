@@ -1,9 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
+import { api } from "../../api/axios";
+import { useCookies } from "react-cookie";
+import { formatNumber } from "../../auxiliar/functions";
+import dayjs from "dayjs";
+interface listProdutoProps {
+  dadosProdutosComprados:{
+    ID: string[];
+    CODIGO: string[];
+    NOME: string[];
+    VALOR: string[];
+    DATAHORA: Date;
+  }[];
+}
 
 export function Lista() {
-  const [count, setCount] = useState(0);
+  const [cookies, setCookie] = useCookies();
+  const [listProdutos, setListProdutos] = useState<listProdutoProps | null>(null);
 
+
+  useEffect(() => {
+    if(cookies.tokenJunicard)
+      buscarListadeProdutos();
+  }, [])
+  
+  async function buscarListadeProdutos() {
+    try{
+      let response = await api.get('getlistadecompra',{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
+      if(response.data){
+        setListProdutos(response.data);
+      }
+    }
+    catch (error:any) {
+      if(error.response.data.status === '-1'){
+        setCookie('tokenJunicard', '');
+      }
+      alert(error.response.data.msg);
+    }
+   }
+
+   
   return (
     <Table celled>
       <Table.Header>
@@ -16,37 +52,15 @@ export function Lista() {
       </Table.Header>
 
       <Table.Body>
-        <Table.Row warning>
-          <Table.Cell>Bola de Futebol</Table.Cell>
-          <Table.Cell>05/02/2023</Table.Cell>
-          <Table.Cell>J$25,00</Table.Cell>
-          <Table.Cell>Comprado</Table.Cell>
-        </Table.Row>
-        <Table.Row positive>
-          <Table.Cell>Boneca</Table.Cell>
-          <Table.Cell>05/02/2023</Table.Cell>
-          <Table.Cell>J$25,00</Table.Cell>
-          <Table.Cell>Comprado</Table.Cell>
-        </Table.Row>
-        <Table.Row negative>
-          <Table.Cell>Joguinho</Table.Cell>
-          <Table.Cell>05/02/2023</Table.Cell>
-          <Table.Cell>J$25,00</Table.Cell>
-          <Table.Cell>Cancelado</Table.Cell>
-        </Table.Row>
-
-        <Table.Row positive>
-          <Table.Cell>Boneca</Table.Cell>
-          <Table.Cell>05/02/2023</Table.Cell>
-          <Table.Cell>J$25,00</Table.Cell>
-          <Table.Cell>Comprado</Table.Cell>
-        </Table.Row>
-        <Table.Row negative>
-          <Table.Cell>Jogo da vida / banco imobiliario </Table.Cell>
-          <Table.Cell>05/02/2023</Table.Cell>
-          <Table.Cell>J$25,00</Table.Cell>
-          <Table.Cell>Cancelado</Table.Cell>
-        </Table.Row>
+        
+        {listProdutos?.dadosProdutosComprados.map((produto, index) => (
+          <Table.Row   key={`${produto.ID}`} >
+            <Table.Cell>{`${produto.CODIGO} - ${produto.NOME}`}</Table.Cell>
+            <Table.Cell>{ dayjs(produto?.DATAHORA).format('DD/MM/YYYY')}</Table.Cell>
+            <Table.Cell>J$ {formatNumber(produto.VALOR)}</Table.Cell>
+            <Table.Cell>Comprado</Table.Cell>
+          </Table.Row>
+        ))}
       </Table.Body>
     </Table>
   );
