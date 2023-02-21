@@ -26,7 +26,7 @@ export function Lista() {
   
   async function buscarListadeProdutos() {
     try{
-      let response = await api.get('getlistadecompra',{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
+      let response = await api.get('getlistadecompra?'+Math.floor(Math.random() * 20),{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
       if(response.data){
         setListProdutos(response.data);
       }
