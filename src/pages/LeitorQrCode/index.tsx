@@ -5,6 +5,7 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { NumericFormat } from 'react-number-format';
 import { api } from '../../api/axios';
 import { useCookies } from 'react-cookie';
+import { formatNumber } from '../../auxiliar/functions';
 
 interface produtoProps {
   CODIGO: string[];
@@ -111,7 +112,7 @@ async function comprar() {
         <Modal.Header>Deseja Compra o produto: { dadosProduto?.NOME} ? </Modal.Header>
         <Modal.Content >
           <div className="centerComp">
-          <p>{ dadosProduto?.NOME}  custa { dadosProduto?.VALOR}  </p>
+          <h3>{ dadosProduto?.NOME}  custa J$ { formatNumber(dadosProduto?.VALOR)}  </h3>
           </div>
         </Modal.Content>
         <Modal.Actions> 
