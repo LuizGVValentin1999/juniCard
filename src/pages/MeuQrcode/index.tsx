@@ -38,7 +38,7 @@ export function MeuQrcode() {
    }
 
   return (
-    <div className="centralizameuqrcode" >
+    <div className="centerComp" >
       <h1>Qr Code para tranferencia de Juniedas de {infoAluno?.USUARIO}</h1>
     <QRCode
     value={JSON.stringify(infoAluno)}
