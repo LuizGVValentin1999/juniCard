@@ -31,10 +31,11 @@ export function Login() {
       });
       if(response.data.token){
         setCookie('tokenJunicard', response.data.token);
+        setUsuario('');
+        setPassword('');
       }
     
-      setUsuario('');
-      setPassword('');
+    
     }
     catch (error:any) {
       setCookie('tokenJunicard', '');
