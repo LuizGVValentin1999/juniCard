@@ -136,7 +136,8 @@ useEffect(() => {
   }
  }
 
- const printRef = React.useRef();
+ 
+ const printRef = React.useRef<HTMLDivElement>(null);
  const handleDownloadImage = async () => {
   const element:any = printRef.current;
   const canvas = await html2canvas(element);
