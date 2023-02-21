@@ -48,13 +48,14 @@ export function Login() {
     <Grid className="loginBox" textAlign="center" verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header color="red" textAlign="center">
-          <h1>Bem vindo a Juni Card</h1>
+          <h1>Bem vindo a Juniedas</h1>
         </Header>
         <Form  onSubmit={login}  size="large">
           <Segment stacked>
             <Form.Input
               fluid
               icon="user"
+              name="user"
               iconPosition="left"
               placeholder="Nome de usuario"
               value={usuario}
@@ -66,6 +67,7 @@ export function Login() {
               iconPosition="left"
               placeholder="Senha passada pela professora"
               type="password"
+              name="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
             />
