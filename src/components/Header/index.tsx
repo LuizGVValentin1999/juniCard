@@ -3,12 +3,13 @@ import { Menu } from "semantic-ui-react";
 
 interface HeaderProps {
   name: string;
+  admin?: string;
 }
 export default class Header extends Component<HeaderProps> {
-  state = { activeItem: this.props.name };
+  state = { activeItem: this.props.name, adminUser:  this.props.admin };
 
   render() {
-    const { activeItem } = this.state;
+    const { activeItem, adminUser } = this.state;
 
     return (
       <div>
@@ -33,11 +34,14 @@ export default class Header extends Component<HeaderProps> {
             href="/meuqrcode"
             active={activeItem === "/meuqrcode"}
           />
-          <Menu.Item
+          {adminUser === '1' && 
+            <Menu.Item
             name="Trasferir"
             href="/trasferir"
             active={activeItem === "/trasferir"}
           />
+          }
+          
           <Menu.Menu position='right'>
             <Menu.Item
               name='Sair'

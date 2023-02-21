@@ -12,6 +12,7 @@ export function Saldo() {
   
 
   useEffect(() => {
+    if(cookies.tokenJunicard)
     consultarSaldo();
   }, [])
 

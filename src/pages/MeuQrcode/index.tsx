@@ -19,7 +19,8 @@ export function MeuQrcode() {
 
   
   useEffect(() => {
-    meuQRcode();
+    if(cookies.tokenJunicard)
+      meuQRcode();
   }, [])
 
    async function meuQRcode() {

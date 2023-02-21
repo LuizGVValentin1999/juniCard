@@ -32,9 +32,11 @@ function exampleReducer(state: any, action: { type: any; size?: any; }) {
 }
 
 async function trasferir() {
+  let valorFormat = await valor.replace(".", "");
+   valorFormat = await valorFormat.replace(",", ".");
   try{
     let response = await api.post('trasferir',{
-      Valor: valor,
+      Valor: valorFormat,
       id_Junior: infoAluno?.ID
     },{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
     if(response.data.status === '1'){
