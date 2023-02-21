@@ -37,7 +37,7 @@ export function Login() {
       setPassword('');
     }
     catch (error:any) {
-      setCookie('tokenJunicard', false);
+      setCookie('tokenJunicard', '');
       alert(error.response.data.msg);
     }
    

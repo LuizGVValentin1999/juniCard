@@ -24,7 +24,7 @@ export function Saldo() {
     }
     catch (error:any) {
       if(error.response.data.status === '0'){
-        setCookie('tokenJunicard', false);
+        setCookie('tokenJunicard', '');
       }
       alert(error.response.data.msg);
     }
