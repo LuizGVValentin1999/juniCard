@@ -15,15 +15,15 @@ export function Router() {
     <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<DefaultLayout  />}>
-        <Route path="/" element={<Saldo />} />
-        <Route path="/saldo" element={<Saldo />} />
-        <Route path="/lista" element={<Lista />} />
-        <Route path="/qrcode" element={<QrCode />} />
-        <Route path="/meuqrcode" element={<MeuQrcode />} />
-        <Route path="/listadeproduto" element={<ListaDeProduto />} />
-        <Route path="/trasferir" element={<Trasferir />} />
-        <Route path="/deslogar" element={(<Deslogar />)} />
-      </Route>
+          <Route path="/" element={<Saldo />} />
+          <Route path="/saldo" element={<Saldo />} />
+          <Route path="/lista" element={<Lista />} />
+          <Route path="/qrcode" element={<QrCode />} />
+          <Route path="/meuqrcode" element={<MeuQrcode />} />
+          <Route path="/listadeproduto" element={<ListaDeProduto />} />
+          <Route path="/trasferir" element={<Trasferir />} />
+          <Route path="/deslogar" element={(<Deslogar />)} />
+        </Route>
     </Routes>
   );
 }
