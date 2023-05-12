@@ -32,8 +32,27 @@ body #root {
   background: #cbeded;
 }
 
-.centralizameuqrcode{
-  display: flex;
+.centerComp{ 
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.fullW{
+  width: 90%
+}
+
+
+input{
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #4a3434;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.2rem; 
+}
+
+input.money{
+  text-align: end;
+}
+  

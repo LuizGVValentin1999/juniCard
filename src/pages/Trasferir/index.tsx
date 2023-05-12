@@ -5,23 +5,18 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { NumericFormat } from 'react-number-format';
 import { api } from '../../api/axios';
 import { useCookies } from 'react-cookie';
-import { formatNumber } from '../../auxiliar/functions';
 
-interface produtoProps {
-  CODIGO: string[];
-}
-interface dadosProdutoProps {
+interface alunoProps {
   ID: string[];
-  CODIGO: string[];
-  NOME: string[];
-  VALOR: string[];
+  USUARIO: string[];
+  ADMIN: string[];
+  SALDO: string[];
 }
 
-export function QrCode() {
+export function Trasferir() {
   const [valor, setValor] = useState('10,00');
   const [cookies, setCookie] = useCookies();
-  const [infoProduto, setInfoProduto] = useState<produtoProps | null>(null);
-  const [dadosProduto, setDadosProduto] = useState<dadosProdutoProps | null>(null);
+  const [infoAluno, setInfoAluno] = useState<alunoProps | null>(null);
 
 
 
@@ -35,36 +30,15 @@ function exampleReducer(state: any, action: { type: any; size?: any; }) {
       throw new Error('Unsupported action...') 
   }
 }
-useEffect(() => {
-  if(infoProduto)
-    getItem();
-}, [infoProduto])
 
-
-async function getItem() {
+async function trasferir() {
+  let valorFormat = await valor.replace(".", "");
+   valorFormat = await valorFormat.replace(",", ".");
   try{
-    let response = await api.get('getitem?Codigo='+infoProduto?.CODIGO,{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
-    if(response.data.status === '1'){
-      setDadosProduto(response.data.dadosProduto);
-    }
-  }
-  catch (error:any) {
-    if(error.response.data.status === '-1'){
-      setCookie('tokenJunicard', '');
-    }
-    alert(error.response.data.msg);
-  }
-  
-  return;
- }
-
- 
-async function comprar() {
-  try{
-    let response = await api.post('compraritem',{
-      Produto:dadosProduto?.ID
+    let response = await api.post('trasferir',{
+      Valor: valorFormat,
+      id_Junior: infoAluno?.ID
     },{ headers: { Authorization: `Bearer ${cookies.tokenJunicard}` }});
-    
     if(response.data.status === '1'){
       alert(response.data.msg);
     }
@@ -81,7 +55,6 @@ async function comprar() {
  }
 
 
-
   const [state, dispatch] = React.useReducer(exampleReducer, {
     open: false,
     size: undefined,
@@ -96,7 +69,7 @@ async function comprar() {
       onUpdate={(err, result:any) => { 
         if (result){
           dispatch({ type: 'open', size: 'mini' });
-          setInfoProduto(JSON.parse(result.text));
+          setInfoAluno(JSON.parse(result.text));
         }
       }}
       />
@@ -109,10 +82,11 @@ async function comprar() {
           type: 'close'
         })}
       >
-        <Modal.Header>Deseja Compra o produto: { dadosProduto?.NOME} ? </Modal.Header>
+        <Modal.Header>Trasferir Juniedas para o Junior : { infoAluno?.USUARIO} </Modal.Header>
         <Modal.Content >
           <div className="centerComp">
-          <h3>{ dadosProduto?.NOME}  custa J$ { formatNumber(dadosProduto?.VALOR)}  </h3>
+          <p>Quantas Juniedas gostaria de trasferir ? </p>
+          <NumericFormat className='money' value={valor} onChange={event => setValor(event.target.value)} allowLeadingZeros thousandSeparator="." decimalSeparator="," />
           </div>
         </Modal.Content>
         <Modal.Actions> 
@@ -121,7 +95,7 @@ async function comprar() {
           })}>
             Não
           </Button>
-          <Button positive onClick={comprar}>
+          <Button positive onClick={trasferir}>
             Sim
           </Button>
         </Modal.Actions>
